@@ -11,7 +11,12 @@ import android.content.res.AssetManager;
 public class PokemonListAccessor {
 	public PokemonListAccessor( Context context ){
 		accessor = context.getApplicationContext().getResources().getAssets();
-		pokemonList = new ArrayList<String>();
+		if( pokemonList.isEmpty() ){
+			setList();
+		}
+	}
+
+	private void setList() {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new InputStreamReader(accessor.open("poke_list.html")));
@@ -41,5 +46,5 @@ public class PokemonListAccessor {
 	}
 
 	private AssetManager accessor;
-	private ArrayList<String> pokemonList;
+	static private ArrayList<String> pokemonList = new ArrayList<String>();
 }
