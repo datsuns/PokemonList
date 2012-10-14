@@ -34,7 +34,6 @@ public class PokemonListActivity extends Activity {
         v.setAdapter(adapter);
         v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // クリックされたアイテムを取得します
                 Intent intent = new Intent( getApplicationContext(), PokemonDetailView.class );
                 intent.putExtra( "ItemNumber", position );
                 startActivity( intent );
