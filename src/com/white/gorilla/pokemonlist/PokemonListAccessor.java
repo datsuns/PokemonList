@@ -17,9 +17,8 @@ public class PokemonListAccessor {
 	}
 
 	private void setList() {
-		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new InputStreamReader(accessor.open("poke_list.html")));
+			BufferedReader br = new BufferedReader(new InputStreamReader(accessor.open("poke_list.html")));
 			while( true ){
 				String s = br.readLine();
 				if( s == null ){
