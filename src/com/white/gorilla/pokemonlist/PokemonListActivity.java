@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,10 +19,24 @@ public class PokemonListActivity extends Activity {
         addItem();
     }
 
+    // オプションメニュー選択時に一度だけ呼ばれる
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_pokemon_list, menu);
+        menu.add( Menu.NONE, ConstantData.MENU_ID_INFO, Menu.NONE, getString(R.string.info_menu_title));
         return true;
+    }
+
+    // オプションメニューアイテムが選択された時呼ばれる
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item ){
+    	switch( item.getItemId() ){
+    	case ConstantData.MENU_ID_INFO:
+    		Intent intent = new Intent( getApplicationContext(),PokemonListInfoActivity.class );
+    		startActivity( intent );
+    		break;
+    	}
+    	return true;
     }
 
 	private void addItem() {

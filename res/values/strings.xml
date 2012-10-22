@@ -6,5 +6,8 @@
     <string name="title_activity_pokemon_list">PokemonListActivity</string>
     <string name="title_activity_pokemon_detail_view">PokemonDetailView</string>
     <string name="selected_item_num">ItemNumber</string>
+    <string name="info_menu_title">info</string>
+    <string name="title_activity_pokemon_list_info">PokemonListInfoActivity</string>
+    <string name="info_activity_description">InfoActivityDescription</string>
 
 </resources>

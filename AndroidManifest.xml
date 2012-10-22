@@ -24,6 +24,10 @@
             android:name=".PokemonDetailView"
             android:label="@string/title_activity_pokemon_detail_view" >
         </activity>
+        <activity
+            android:name=".PokemonListInfoActivity"
+            android:label="@string/title_activity_pokemon_list_info" >
+        </activity>
     </application>
 
 </manifest>
