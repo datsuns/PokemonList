@@ -1,20 +1,21 @@
 package com.white.gorilla.pokemonlist;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.webkit.WebView;
 
 public class PokemonDetailView extends Activity {
+	String TEXT_ENCODING = "UTF-8";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_detail_view);
         WebView v  = (WebView)findViewById(R.id.htmlRendorView);
-        int num = getIntent().getExtras().getInt("ItemNumber");
+        int num = getIntent().getExtras().getInt(ConstantData.INTENT_FILTER_SELECTED_ITEM);
         PokemonListAccessor accessor = new PokemonListAccessor(this);
-        v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , "UTF-8", null );
+        v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , TEXT_ENCODING, null );
 
     }
 
