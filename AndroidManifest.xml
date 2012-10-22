@@ -23,8 +23,6 @@
         <activity
             android:name=".PokemonDetailView"
             android:label="@string/title_activity_pokemon_detail_view" >
-            <intent-filter>
-            </intent-filter>
         </activity>
     </application>
 
