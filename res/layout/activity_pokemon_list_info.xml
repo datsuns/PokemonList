@@ -66,9 +66,9 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView4"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageView1"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="46dp"
         android:text="@string/link_poktsyo"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -79,7 +79,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView6"
         android:text="@string/link_pokrsyourl"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="15" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
