@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-public class PokemonListAccessor {
-	public PokemonListAccessor( Context context ){
+public class ListAccessor {
+	public ListAccessor(Context context){
 		accessor = context.getApplicationContext().getResources().getAssets();
 		if( pokemonList.isEmpty() ){
 			setList();

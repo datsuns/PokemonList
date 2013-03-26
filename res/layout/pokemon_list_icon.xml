@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	    <LinearLayout
+	        android:id="@+id/LinearLayout01"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+
+	        <ImageView
+	            android:id="@+id/PokemonListIcon"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:tag="icon"
+	            android:minHeight="48dp"
+	            android:maxWidth="48dp"
+	            android:maxHeight="48dp"
+	            android:minWidth="48dp"></ImageView>
+
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="24sp"
+	            android:textColor="#000000"
+	            android:id="@+id/PokemonListText"
+	            android:text="TextView"
+	            android:tag="text"
+	            android:layout_gravity="center_vertical"></TextView>
+	    </LinearLayout>
+</LinearLayout>

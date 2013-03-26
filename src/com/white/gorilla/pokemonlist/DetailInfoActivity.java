@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.webkit.WebView;
 
-public class PokemonDetailView extends Activity {
+public class DetailInfoActivity extends Activity {
 	String TEXT_ENCODING = "UTF-8";
 
     @Override
@@ -14,7 +14,7 @@ public class PokemonDetailView extends Activity {
         setContentView(R.layout.activity_pokemon_detail_view);
         WebView v  = (WebView)findViewById(R.id.htmlRendorView);
         int num = getIntent().getExtras().getInt(ConstantData.INTENT_FILTER_SELECTED_ITEM);
-        PokemonListAccessor accessor = new PokemonListAccessor(this);
+        ListAccessor accessor = new ListAccessor(this);
         v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , TEXT_ENCODING, null );
 
     }

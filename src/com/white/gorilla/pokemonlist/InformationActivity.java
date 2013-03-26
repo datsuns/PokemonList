@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class PokemonListInfoActivity extends Activity {
+public class InformationActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

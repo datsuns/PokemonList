@@ -10,7 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class PokemonListActivity extends Activity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class PokemonListActivity extends Activity {
     public boolean onOptionsItemSelected( MenuItem item ){
     	switch( item.getItemId() ){
     	case ConstantData.MENU_ID_INFO:
-    		Intent intent = new Intent( getApplicationContext(),PokemonListInfoActivity.class );
+    		Intent intent = new Intent( getApplicationContext(),InformationActivity.class );
     		startActivity( intent );
     		break;
     	}
@@ -40,16 +44,19 @@ public class PokemonListActivity extends Activity {
     }
 
 	private void addItem() {
-		PokemonListAccessor accessor = new PokemonListAccessor(this);
+		ListAccessor accessor = new ListAccessor(this);
 		ListView v = (ListView)findViewById(R.id.pokemonList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 );
+        List<ListItem> items = new ArrayList<ListItem>();
+
+        ListAdapter new_adapter = new ListAdapter(this, R.layout.pokemon_list_icon, items );
+        int i = 1;
         for( String title : accessor.getTitles() ){
-        	adapter.add( title );
+            items.add(new ListItem(i++, title) );
         }
-        v.setAdapter(adapter);
+        v.setAdapter(new_adapter);
         v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent( getApplicationContext(), PokemonDetailView.class );
+                Intent intent = new Intent( getApplicationContext(), DetailInfoActivity.class );
                 intent.putExtra( ConstantData.INTENT_FILTER_SELECTED_ITEM , position );
                 startActivity( intent );
             }
