@@ -3,16 +3,15 @@ package com.white.gorilla.pokemonlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MainActivity extends Activity {
 
@@ -48,16 +47,18 @@ public class MainActivity extends Activity {
 		ListView v = (ListView)findViewById(R.id.pokemonList);
         List<ListItem> items = new ArrayList<ListItem>();
 
-        ListAdapter new_adapter = new ListAdapter(this, R.layout.pokemon_list_icon, items );
         int i = 1;
         for( String title : accessor.getTitles() ){
-            items.add(new ListItem(i++, title) );
+            items.add(new ListItem(i, title) );
+            Logger.log( "add(" + i + ") " + title );
+            i += 1;
         }
-        v.setAdapter(new_adapter);
+        ListAdapter adapter = new ListAdapter(this, R.layout.pokemon_list_icon, items );
+        v.setAdapter(adapter);
         v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent( getApplicationContext(), DetailInfoActivity.class );
-                intent.putExtra( ConstantData.INTENT_FILTER_SELECTED_ITEM , position );
+                intent.putExtra( ConstantData.SELECTED_ITEM_NUMBER, position );
                 startActivity( intent );
             }
         });

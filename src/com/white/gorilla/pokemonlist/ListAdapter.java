@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,12 +73,12 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
             InputStream s = this.context.getResources().getAssets().open(name);
             Bitmap bitmap = BitmapFactory.decodeStream(s);
             imageView.setImageBitmap(bitmap);
-            // テキストにソレを設定
-            TextView textView = (TextView)view.findViewWithTag("text");
-            textView.setText(item.getText());
+            Logger.log( "position:" + position + "icon:" + name);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+        TextView textView = (TextView)view.findViewWithTag("text");
+        textView.setText(item.getText());
 
 		return view;
 	}

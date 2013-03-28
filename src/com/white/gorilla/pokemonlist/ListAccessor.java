@@ -27,7 +27,6 @@ public class ListAccessor {
 				pokemonList.add(s);
 			}
 		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 	}
@@ -37,11 +36,11 @@ public class ListAccessor {
 	}
 
 	public ArrayList<String> getTitles(){
-		ArrayList<String> output = new ArrayList<String>();
+		ArrayList<String> titles = new ArrayList<String>();
 		for( String s : pokemonList){
-			output.add(s.substring(0, s.indexOf("<")));
+			titles.add(s.substring(0, s.indexOf("<")));
 		}
-		return output;
+		return titles;
 	}
 
 	private AssetManager accessor;

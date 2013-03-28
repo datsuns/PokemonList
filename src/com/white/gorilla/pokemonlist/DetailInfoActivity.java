@@ -13,7 +13,7 @@ public class DetailInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_detail_view);
         WebView v  = (WebView)findViewById(R.id.htmlRendorView);
-        int num = getIntent().getExtras().getInt(ConstantData.INTENT_FILTER_SELECTED_ITEM);
+        int num = getIntent().getExtras().getInt(ConstantData.SELECTED_ITEM_NUMBER);
         ListAccessor accessor = new ListAccessor(this);
         v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , TEXT_ENCODING, null );
 
