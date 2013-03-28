@@ -67,13 +67,11 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
 		// アイコンにアレを設定
 		ImageView imageView = (ImageView)view.findViewWithTag("icon");
-        String name = "icon/" + item.getIconNumber();
-        name += ".gif";
+        InputStream s = null;
         try {
-            InputStream s = this.context.getResources().getAssets().open(name);
+            s = openIconStream(item.getIconNumber());
             Bitmap bitmap = BitmapFactory.decodeStream(s);
             imageView.setImageBitmap(bitmap);
-            Logger.log( "position:" + position + "icon:" + name);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -82,5 +80,18 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
 		return view;
 	}
+
+    public InputStream openIconStream( int iconNumber ) throws IOException {
+        String name = "icon/" + iconNumber + ".gif";
+        try {
+            InputStream s = this.context.getResources().getAssets().open(name);
+            Logger.log("position:" + iconNumber + "icon:" + name);
+            return s;
+        } catch (IOException e) {
+            InputStream s = this.context.getResources().getAssets().open("icon/icon.png");
+            Logger.log("load default icon to " + iconNumber);
+            return s;
+        }
+    }
 
 }
