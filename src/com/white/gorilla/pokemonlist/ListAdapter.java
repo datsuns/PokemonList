@@ -82,7 +82,7 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 	}
 
     public InputStream openIconStream( int iconNumber ) throws IOException {
-        String name = "icon/" + iconNumber + ".gif";
+        String name = "icon/" + String.format("%03d", iconNumber) + ".gif";
         try {
             InputStream s = this.context.getResources().getAssets().open(name);
             Logger.log("position:" + iconNumber + "icon:" + name);
