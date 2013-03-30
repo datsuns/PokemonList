@@ -67,11 +67,11 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
 		// アイコンにアレを設定
 		ImageView imageView = (ImageView)view.findViewWithTag("icon");
-        InputStream s = null;
         try {
-            s = openIconStream(item.getIconNumber());
+            InputStream s = openIconStream(item.getIconNumber());
             Bitmap bitmap = BitmapFactory.decodeStream(s);
             imageView.setImageBitmap(bitmap);
+            s.close();
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
