@@ -2,22 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" android:baselineAligned="false">
 
 	    <LinearLayout
 	        android:id="@+id/LinearLayout01"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content">
+            android:layout_height="70dp"
+            android:minHeight="70dp"
+	        android:layout_width="wrap_content">
 
 	        <ImageView
 	            android:id="@+id/PokemonListIcon"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:tag="icon"
-	            android:minHeight="48dp"
-	            android:maxWidth="48dp"
-	            android:maxHeight="48dp"
-	            android:minWidth="48dp"></ImageView>
+	            android:minHeight="70dp"
+	            android:minWidth="70dp"></ImageView>
 
 	        <TextView
 	            android:layout_width="wrap_content"
