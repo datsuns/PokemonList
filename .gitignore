@@ -16,5 +16,6 @@ gen/
 local.properties
 
 .settings
+.DS_Store
 
 tools/html/
