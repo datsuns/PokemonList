@@ -1,42 +1,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <WebView
-        android:id="@+id/htmlRenderView"
-        android:layout_width="match_parent"
-        android:layout_height="237dp"
-        android:layout_alignParentLeft="true" android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true" android:layout_marginTop="47dp"/>
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            android:layout_above="@+id/htmlRenderView">
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+        <TableRow
+                android:layout_weight="1"
+                >
+            <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/detailviewimage"
+                    android:tag="icon"
+                    android:contentDescription="hello"
+                    />
 
-        <ImageView
-                android:id="@+id/detailViewImage"
-                android:layout_above="@+id/htmlRenderView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tag="icon"
-                android:minHeight="48dp"
-                android:maxWidth="48dp"
-                android:maxHeight="48dp"
-                android:minWidth="48dp"
-                />
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/htmlRenderView"
-                android:id="@+id/detailViewText"
-                android:textSize="24sp"
-                android:textColor="#000000"
-                android:text="TextView"
-                android:tag="text"
-                android:layout_gravity="center_vertical"
-                />
-    </LinearLayout>
+            <TextView
+                    android:layout_weight="3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/detailViewText"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:text="Hello:w"
+                    android:tag="text"
+                    />
+        </TableRow>
+        <TableRow
+            android:layout_weight="10"
+            >
+            <WebView
+                    android:id="@+id/htmlLenderView"
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    />
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

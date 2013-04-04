@@ -26,7 +26,7 @@ public class DetailInfoActivity extends Activity {
     }
 
     private void loadTitleView(int num, ListAccessor accessor) {
-        ImageView image = (ImageView)findViewById(R.id.detailViewImage);
+        ImageView image = (ImageView)findViewById(R.id.detailviewimage);
         try {
             // TODO 1オリジン？
             InputStream s = openIconStream(num + 1);
@@ -48,7 +48,7 @@ public class DetailInfoActivity extends Activity {
     }
 
     public void loadMainView(int num, ListAccessor accessor){
-        WebView v  = (WebView)findViewById(R.id.htmlRenderView);
+        WebView v  = (WebView)findViewById(R.id.htmlLenderView);
         v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , TEXT_ENCODING, null );
     }
 
