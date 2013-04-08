@@ -10,7 +10,7 @@ import android.util.Log;
  * To change this template use File | Settings | File Templates.
  */
 public class Logger {
-    static void log(String s ){
+    public static void log(String s ){
         Log.i("PokemonList", s );
     }
 }

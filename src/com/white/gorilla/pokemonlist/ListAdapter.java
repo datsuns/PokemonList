@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.white.gorilla.pokemonlist.data.PokemonData;
 /**
  * Created with IntelliJ IDEA.
  * User: satoshi
@@ -24,25 +25,23 @@ import android.widget.TextView;
 /**
  * アイコンとテキストを表示するためのアダプタ.
  */
-public class ListAdapter extends ArrayAdapter<ListItem> {
+public class ListAdapter extends ArrayAdapter<PokemonData> {
 	/** XMLからViewを生成するのに使うヤツ. */
 	private LayoutInflater inflater;
 	/** リストアイテムのレイアウト. */
 	private int textViewResourceId;
 	/** 表示するアイテム. */
-	private List<ListItem> items;
-    private Context context;
+	private List<PokemonData> items;
 
 	/**
 	 * コンストラクタ.
 	 */
-	public ListAdapter(Context context, int textViewResourceId, List<ListItem> items){
+	public ListAdapter(Context context, int textViewResourceId, List<PokemonData> items){
 		super(context, textViewResourceId, items);
 		// リソースIDと表示アイテムを保持っておく
 		this.textViewResourceId = textViewResourceId;
 		this.items = items;
-        this.context = context;
-		// ContextからLayoutinflatorを取得
+		// ContextからLayout inflatorを取得
 		inflater = (LayoutInflater)context.getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE
 		);
@@ -61,37 +60,13 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 		else{
 			view = inflater.inflate(textViewResourceId, null);
 		}
-
 		// 対象のアイテムを取得
-		ListItem item = items.get(position);
-
+		PokemonData item = items.get(position);
 		// アイコンにアレを設定
 		ImageView imageView = (ImageView)view.findViewWithTag("icon");
-        try {
-            InputStream s = openIconStream(item.getIconNumber());
-            Bitmap bitmap = BitmapFactory.decodeStream(s);
-            imageView.setImageBitmap(bitmap);
-            s.close();
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        imageView.setImageBitmap(item.getImage());
         TextView textView = (TextView)view.findViewWithTag("text");
-        textView.setText(item.getText());
-
+        textView.setText(item.getTitle());
 		return view;
 	}
-
-    public InputStream openIconStream( int iconNumber ) throws IOException {
-        String name = "icon/" + String.format("%03d", iconNumber) + ".gif";
-        try {
-            InputStream s = this.context.getResources().getAssets().open(name);
-            Logger.log("position:" + iconNumber + "icon:" + name);
-            return s;
-        } catch (IOException e) {
-            InputStream s = this.context.getResources().getAssets().open("icon/icon.png");
-            Logger.log("load default icon to " + iconNumber);
-            return s;
-        }
-    }
-
 }
