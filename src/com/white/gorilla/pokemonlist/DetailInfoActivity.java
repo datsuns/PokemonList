@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.white.gorilla.pokemonlist.data.PokemonData;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,26 +20,16 @@ public class DetailInfoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_detail_view);
-        ListAccessor accessor = new ListAccessor(this);
-        int num = getIntent().getExtras().getInt(ConstantData.SELECTED_ITEM_NUMBER);
-        loadTitleView(num, accessor);
-        loadMainView(num, accessor);
+        PokemonData data = (PokemonData)getIntent().getSerializableExtra(ConstantData.SELECTED_ITEM_DATA);
+        loadTitleView(data);
+        loadMainView(data);
     }
 
-    private void loadTitleView(int num, ListAccessor accessor) {
+    private void loadTitleView(PokemonData data) {
         ImageView image = (ImageView)findViewById(R.id.detailviewimage);
-        try {
-            // TODO 1オリジン？
-            InputStream s = openIconStream(num + 1);
-            Bitmap bitmap = BitmapFactory.decodeStream(s);
-            image.setImageBitmap(bitmap);
-            s.close();
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
+        image.setImageBitmap(data.getImage());
         TextView text = (TextView)findViewById(R.id.detailViewText);
-        text.setText(accessor.getTitles().get(num));
+        text.setText(data.getTitle());
     }
 
     @Override
@@ -47,21 +38,8 @@ public class DetailInfoActivity extends Activity {
         return true;
     }
 
-    public void loadMainView(int num, ListAccessor accessor){
+    public void loadMainView(PokemonData data){
         WebView v  = (WebView)findViewById(R.id.htmlLenderView);
-        v.loadDataWithBaseURL(null, accessor.getItem(num), "text/html" , TEXT_ENCODING, null );
-    }
-
-    public InputStream openIconStream( int iconNumber ) throws IOException {
-        String name = "icon/" + String.format("%03d", iconNumber) + ".gif";
-        try {
-            InputStream s = this.getResources().getAssets().open(name);
-            Logger.log("position:" + iconNumber + "icon:" + name);
-            return s;
-        } catch (IOException e) {
-            InputStream s = this.getResources().getAssets().open("icon/icon.png");
-            Logger.log("load default icon to " + iconNumber);
-            return s;
-        }
+        v.loadDataWithBaseURL(null, data.getBody(), "text/html" , TEXT_ENCODING, null );
     }
 }
