@@ -6,5 +6,15 @@
     <string name="title_activity_pokemon_list">PokemonListActivity</string>
     <string name="title_activity_pokemon_detail_view">PokemonDetailView</string>
     <string name="selected_item_num">ItemNumber</string>
+    <string name="info_menu_title">info</string>
+    <string name="title_activity_pokemon_list_info">PokemonListInfoActivity</string>
+    <string name="info_activity_description">InfoActivityDescription</string>
+    <string name="app_title">ポケモンリスト</string>
+    <string name="team_name">CurryUdon</string>
+    <string name="app_version_title">Version：</string>
+    <string name="app_versions">1.0</string>
+    <string name="jyouhoumoto">情報元</string>
+    <string name="link_poktsyo">ポケ書</string>
+    <string name="link_pokrsyourl">http://www.pokesho.com/</string>
 
 </resources>
