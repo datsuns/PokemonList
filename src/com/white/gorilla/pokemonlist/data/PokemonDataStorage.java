@@ -31,9 +31,13 @@ public class PokemonDataStorage {
         createList();
     }
 
-    public PokemonData get( int index ){
+    public ArrayList<PokemonData> get(){
+        return this.data;
+    }
+
+    public PokemonData get( String title ){
         for( PokemonData d : this.data ){
-            if( d.getIndex() == index ){
+            if( d.getTitle().equals(title) ){
                 return d;
             }
 
@@ -41,11 +45,8 @@ public class PokemonDataStorage {
         return new PokemonData(0, "", "", null);
     }
 
-    public ArrayList<PokemonData> get(){
-        return this.data;
-    }
 
-    public ArrayList<PokemonData> get(String filter){
+    public ArrayList<PokemonData> search(String filter){
         ArrayList<PokemonData> result = new ArrayList<PokemonData>();
         for( PokemonData d : this.data ){
             if( d.getTitle().contains(filter) ){
