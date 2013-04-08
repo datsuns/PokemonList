@@ -45,6 +45,16 @@ public class PokemonDataStorage {
         return this.data;
     }
 
+    public ArrayList<PokemonData> get(String filter){
+        ArrayList<PokemonData> result = new ArrayList<PokemonData>();
+        for( PokemonData d : this.data ){
+            if( d.getTitle().contains(filter) ){
+                result.add(d);
+            }
+        }
+        return result;
+    }
+
     private void createList() {
         this.data = new ArrayList<PokemonData>();
         try {
@@ -71,7 +81,7 @@ public class PokemonDataStorage {
         String name = "icon/" + String.format("%03d", iconNumber) + ".gif";
         try {
             InputStream s = this.context.getResources().getAssets().open(name);
-            Logger.log("d: position:" + iconNumber + "icon:" + name);
+            //Logger.log("d: position:" + iconNumber + "icon:" + name);
             return s;
         } catch (IOException e) {
             InputStream s = this.context.getResources().getAssets().open("icon/icon.png");

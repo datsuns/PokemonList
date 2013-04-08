@@ -3,12 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ListView
-        android:id="@+id/pokemonList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-    </ListView>
+    <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout">
+        <TableRow
+                android:layout_weight="1"
+                >
+            <EditText
+                    android:layout_weight="6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/searchInput"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:text=""
+                    android:tag="text"
+                    />
+            <Button
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="検索"
+                    android:id="@+id/searchButton"
+                    android:layout_toRightOf="@+id/tableLayout"
+                    android:layout_alignTop="@+id/tableLayout"
+                    />
+        </TableRow>
+        <TableRow
+                android:layout_weight="15"
+                >
+            <ListView
+                android:id="@+id/pokemonList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+            </ListView>
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>
