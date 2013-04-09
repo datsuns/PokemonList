@@ -79,6 +79,7 @@ public class PokemonDataStorage {
                 Bitmap bitmap = BitmapFactory.decodeStream(stream);
                 this.data.add( new PokemonData(index, title, s, bitmap) );
                 index++;
+                stream.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
