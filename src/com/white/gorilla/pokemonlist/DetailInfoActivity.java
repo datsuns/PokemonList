@@ -8,10 +8,6 @@ import android.view.Menu;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.white.gorilla.pokemonlist.data.PokemonData;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class DetailInfoActivity extends Activity {
 	String TEXT_ENCODING = "UTF-8";
@@ -20,16 +16,21 @@ public class DetailInfoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_detail_view);
-        PokemonData data = (PokemonData)getIntent().getSerializableExtra(ConstantData.SELECTED_ITEM_DATA);
-        loadTitleView(data);
-        loadMainView(data);
+
+        String title = (String)getIntent().getSerializableExtra(ConstantData.SELECTED_ITEM_TITLE);
+        String body = (String)getIntent().getSerializableExtra(ConstantData.SELECTED_ITEM_BODY);
+        byte[] binary = (byte[])getIntent().getSerializableExtra(ConstantData.SELECTED_ITEM_IMAGE);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(binary, 0, binary.length);
+
+        loadTitleView(title, bitmap);
+        loadMainView(body);
     }
 
-    private void loadTitleView(PokemonData data) {
+    private void loadTitleView(String title, Bitmap bitmap){
         ImageView image = (ImageView)findViewById(R.id.detailviewimage);
-        image.setImageBitmap(data.getImage());
+        image.setImageBitmap(bitmap);
         TextView text = (TextView)findViewById(R.id.detailViewText);
-        text.setText(data.getTitle());
+        text.setText(title);
     }
 
     @Override
@@ -38,8 +39,8 @@ public class DetailInfoActivity extends Activity {
         return true;
     }
 
-    public void loadMainView(PokemonData data){
+    public void loadMainView(String body){
         WebView v  = (WebView)findViewById(R.id.htmlLenderView);
-        v.loadDataWithBaseURL(null, data.getBody(), "text/html" , TEXT_ENCODING, null );
+        v.loadDataWithBaseURL(null, body, "text/html" , TEXT_ENCODING, null );
     }
 }

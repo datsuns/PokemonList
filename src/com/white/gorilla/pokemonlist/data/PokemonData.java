@@ -22,9 +22,7 @@ public class PokemonData implements Serializable{
         this.index = index;
         this.title = title;
         this.body = body;
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, bout);
-        this.bitmap = bout.toByteArray();
+        this.bitmap = image;
     }
 
     public String getTitle(){
@@ -36,7 +34,7 @@ public class PokemonData implements Serializable{
     }
 
     public Bitmap getImage(){
-        return BitmapFactory.decodeByteArray(this.bitmap, 0, this.bitmap.length);
+        return this.bitmap;
     }
 
     public int getIndex(){
@@ -45,6 +43,6 @@ public class PokemonData implements Serializable{
 
     private int index;
     String title;
-    byte[] bitmap;
+    Bitmap bitmap;
     String body;
 }

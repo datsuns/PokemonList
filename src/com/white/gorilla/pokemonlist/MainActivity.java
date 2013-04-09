@@ -2,15 +2,16 @@ package com.white.gorilla.pokemonlist;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.white.gorilla.pokemonlist.data.PokemonData;
 import com.white.gorilla.pokemonlist.data.PokemonDataStorage;
-import com.white.gorilla.pokemonlist.debug.TimeStamp;
-import com.white.gorilla.pokemonlist.debug.Timer;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class MainActivity extends Activity {
@@ -68,8 +69,16 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView v = (TextView)view.findViewWithTag("text");
                 Intent intent = new Intent(getApplicationContext(), DetailInfoActivity.class);
-                // TODO 0 origin ??
-                intent.putExtra(ConstantData.SELECTED_ITEM_DATA, storage.get(v.getText().toString()));
+                PokemonData data = storage.get(v.getText().toString());
+
+                intent.putExtra(ConstantData.SELECTED_ITEM_TITLE, data.getTitle());
+                intent.putExtra(ConstantData.SELECTED_ITEM_BODY, data.getBody());
+
+                ByteArrayOutputStream bout = new ByteArrayOutputStream();
+                data.getImage().compress(Bitmap.CompressFormat.PNG, 100, bout);
+                byte[] binImage = bout.toByteArray();
+                intent.putExtra(ConstantData.SELECTED_ITEM_IMAGE, binImage);
+
                 startActivity(intent);
             }
         });
