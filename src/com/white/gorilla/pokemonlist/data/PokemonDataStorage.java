@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.white.gorilla.pokemonlist.Logger;
+import com.white.gorilla.pokemonlist.debug.Timer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,14 +22,20 @@ import java.util.ArrayList;
  */
 public class PokemonDataStorage {
 
+    private final Timer timer;
+
     public PokemonDataStorage( Context context ){
         this.context = context;
+        timer = new Timer();
         init(context);
+        timer.dump();
     }
 
     public void init( Context context ){
         this.accessor = context.getApplicationContext().getResources().getAssets();
+        timer.push("accessor created");
         createList();
+        timer.push("list created");
     }
 
     public ArrayList<PokemonData> get(){

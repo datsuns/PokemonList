@@ -3,11 +3,14 @@ package com.white.gorilla.pokemonlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.white.gorilla.pokemonlist.data.PokemonDataStorage;
+import com.white.gorilla.pokemonlist.debug.TimeStamp;
+import com.white.gorilla.pokemonlist.debug.Timer;
 
 
 public class MainActivity extends Activity {
@@ -19,6 +22,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_list);
+
 
         storage = new PokemonDataStorage(this);
         adapter = new ListAdapter(this, R.layout.pokemon_list_icon, storage.get() );
@@ -34,6 +38,7 @@ public class MainActivity extends Activity {
                 v.setAdapter(adapter);
             }
         });
+
     }
 
     // オプションメニュー選択時に一度だけ呼ばれる
