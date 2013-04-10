@@ -34,7 +34,8 @@ def parse filename
     line.chomp!
     if line.match '全国 No.' then
       tmp = line.split(' ')
-      list << "#{tmp[2]} #{tmp[3]}"
+      tmp[2].gsub!(/（.*/, '')
+      list << "#{tmp[2]} #{tmp[tmp.length - 1]}"
     end
 
     in_target = true if line.match '<h2.*出現場所'
